@@ -13,5 +13,6 @@ export const connectDatabase = async (): Promise<Database> => {
 
 	return {
 		listings: db.collection('test_listings'),
+		reviews: db.collection('reviews')
 	};
 };

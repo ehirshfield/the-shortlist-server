@@ -12,6 +12,15 @@ export interface Listing {
 	rating: number;
 }
 
+export interface Review {
+	_id: ObjectId;
+	title: string;
+	image: string;
+	body: string;
+	rating: number;
+}
+
 export interface Database {
 	listings: Collection<Listing>;
+	reviews: Collection<Review>;
 }
