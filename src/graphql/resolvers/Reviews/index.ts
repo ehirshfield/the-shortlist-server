@@ -9,7 +9,7 @@ export const reviewResolvers: IResolvers = {
       _args: {},
       { db }: { db: Database }
     ): Promise<Review[]> => {
-      return await db.reviews.find({}).toArray();
+        return await db.reviews.find({}).toArray();
     }
   },
   Mutation: {

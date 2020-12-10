@@ -1,15 +1,8 @@
 import { ObjectId, Collection } from 'mongodb';
 
-export interface Listing {
-	_id: ObjectId;
-	title: string;
-	image: string;
-	address: string;
-	price: number;
-	numOfGuests: number;
-	numOfBeds: number;
-	numOfBaths: number;
-	rating: number;
+export enum ReviewType {
+	Recipe = 'RECIPE',
+	Restaurant = 'RESTAURANT'
 }
 
 export interface Review {
@@ -18,9 +11,23 @@ export interface Review {
 	image: string;
 	body: string;
 	rating: number;
+	author: string;
+	type: ReviewType;
+	city?: string;
+	address?: string;
+	url?: string;
+}
+
+export interface User {
+	_id: string;
+	token: string;
+	name: string;
+	avatar: string;
+	contact: string;
+	reviews: ObjectId[];
 }
 
 export interface Database {
-	listings: Collection<Listing>;
 	reviews: Collection<Review>;
+	users: Collection<User>;
 }
