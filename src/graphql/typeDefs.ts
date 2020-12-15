@@ -1,17 +1,6 @@
 import { gql } from "apollo-server-express";
 
 export const typeDefs = gql`
-  type Listing {
-    id: ID!
-    title: String!
-    image: String!
-    address: String!
-    price: Int!
-    numOfGuests: Int!
-    numOfBeds: Int!
-    numOfBaths: Int!
-    rating: Int!
-  }
 
   type Review {
     id: ID!
@@ -22,12 +11,13 @@ export const typeDefs = gql`
   }
 
   type Query {
-    listings: [Listing!]!
+    authUrl: String!
     reviews: [Review!]!
   }
 
   type Mutation {
-    deleteListing(id: ID!): Listing!
+    logIn: String!
+    logOut: String!
     deleteReview(id: ID!): Review!
   }
 `;
