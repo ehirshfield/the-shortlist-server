@@ -1,23 +1,33 @@
-import { gql } from "apollo-server-express";
+import { gql } from 'apollo-server-express';
 
 export const typeDefs = gql`
+    type Review {
+        id: ID!
+        title: String!
+        image: String!
+        body: String!
+        rating: Int!
+    }
 
-  type Review {
-    id: ID!
-    title: String!
-    image: String!
-    body: String!
-    rating: Int!
-  }
+    type Viewer {
+        id: ID
+        token: String
+        avatar: String
+        didRequest: Boolean!
+    }
 
-  type Query {
-    authUrl: String!
-    reviews: [Review!]!
-  }
+    input LogInInput {
+        code: String!
+    }
 
-  type Mutation {
-    logIn: String!
-    logOut: String!
-    deleteReview(id: ID!): Review!
-  }
+    type Query {
+        authUrl: String!
+        reviews: [Review!]!
+    }
+
+    type Mutation {
+        logIn(input: LogInInput): Viewer!
+        logOut: Viewer!
+        deleteReview(id: ID!): Review!
+    }
 `;

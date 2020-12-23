@@ -1,5 +1,12 @@
 import { ObjectId, Collection } from 'mongodb';
 
+export interface Viewer {
+	_id?: string;
+	token?: string;
+	avatar?: string;
+	didRequest: boolean;
+}
+
 export enum ReviewType {
 	Recipe = 'RECIPE',
 	Restaurant = 'RESTAURANT'

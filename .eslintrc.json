@@ -1,15 +1,26 @@
 {
-	"parser": "@typescript-eslint/parser",
-	"parserOptions": {
-		"ecmaVersion": 2018,
-		"sourceType": "module"
-	},
-	"extends": ["plugin:@typescript-eslint/recommended"],
-	"env": { "node": true },
-	"rules": {
-		"indent": "off",
-		"@typescript-eslint/indent": "off",
-		"@typescript-eslint/explicit-function-return-type": "off",
-		"@typescript-eslint/no-var-requires": "off"
-	}
+    "env": {
+        "node": true,
+        "es2021": true
+    },
+    "extends": ["airbnb-base", "prettier", "prettier/@typescript-eslint"],
+    "parser": "@typescript-eslint/parser",
+    "parserOptions": {
+        "ecmaVersion": 12,
+        "sourceType": "module"
+    },
+    "plugins": ["@typescript-eslint"],
+    "rules": {
+        "@typescript-eslint/explicit-function-return-type": "off",
+        "@typescript-eslint/no-var-requires": "off",
+        "max-len": [2, { "code": 85, "tabWidth": 4, "ignoreUrls": true }],
+        "import/prefer-default-export": "off",
+        "import/extensions": "off",
+        "import/no-unresolved": "off",
+        "prefer-destructuring": "off",
+        "no-underscore-dangle": "off",
+        "no-unreachable": "warn",
+        "import/no-extraneous-dependencies": "off",
+        "import/first": "off"
+    }
 }
