@@ -1,5 +1,5 @@
 import merge from 'lodash.merge';
-import { reviewResolvers } from './Reviews';
+import { reviewResolvers } from './Review';
 import { viewerResolvers } from './Viewer';
 import { userResolvers } from './User';
 

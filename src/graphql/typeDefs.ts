@@ -6,10 +6,18 @@ export const typeDefs = gql`
         RESTAURANT
     }
 
+    type User {
+        id: ID!
+        name: String!
+        avatar: String!
+        contact: String!
+        reviews(limit: Int!, page: Int!): Reviews!
+    }
+
     type Review {
         id: ID!
         title: String!
-        author: String!
+        author: User!
         image: String!
         body: String!
         rating: Int!
@@ -22,14 +30,6 @@ export const typeDefs = gql`
     type Reviews {
         total: Int!
         result: [Review!]!
-    }
-
-    type User {
-        id: ID!
-        name: String!
-        avatar: String!
-        contact: String!
-        reviews(limit: Int!, page: Int!): Reviews!
     }
 
     type Viewer {
@@ -47,6 +47,7 @@ export const typeDefs = gql`
         authUrl: String!
         reviews: [Review!]!
         user(id: ID!): User!
+        review(id: ID!): Review!
     }
 
     type Mutation {
