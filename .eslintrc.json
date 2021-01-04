@@ -21,6 +21,8 @@
         "no-underscore-dangle": "off",
         "no-unreachable": "warn",
         "import/no-extraneous-dependencies": "off",
-        "import/first": "off"
+        "import/first": "off",
+        "no-shadow": "warn",
+        "no-unused-vars": "warn"
     }
 }

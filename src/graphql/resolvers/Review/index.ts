@@ -1,7 +1,7 @@
 import { ObjectId } from 'mongodb';
 import { IResolvers } from 'apollo-server-express';
 import { Database, Review, User } from '../../../lib/types';
-import { ReviewArgs } from './types';
+import { ReviewArgs, ReviewsArgs, ReviewsData, ReviewsFilter } from './types';
 
 export const reviewResolvers: IResolvers = {
     Query: {
@@ -20,6 +20,42 @@ export const reviewResolvers: IResolvers = {
                 return review;
             } catch (error) {
                 throw new Error(`Failed to query reviews: ${error}`);
+            }
+        },
+        reviews: async (
+            _root: undefined,
+            { filter, limit, page }: ReviewsArgs,
+            { db }: { db: Database }
+        ): Promise<ReviewsData> => {
+            try {
+                const data: ReviewsData = {
+                    total: 0,
+                    result: [],
+                };
+
+                let cursor = await db.reviews.find({});
+
+                if (filter && filter === ReviewsFilter.RATING_LOW_TO_HIGH) {
+                    cursor = cursor.sort({
+                        rating: 1,
+                    });
+                }
+
+                if (filter && filter === ReviewsFilter.RATING_HIGH_TO_LOW) {
+                    cursor = cursor.sort({
+                        rating: -1,
+                    });
+                }
+
+                cursor = cursor.skip(page > 0 ? (page - 1) * limit : 0);
+                cursor = cursor.limit(limit);
+
+                data.total = await cursor.count();
+                data.result = await cursor.toArray();
+
+                return data;
+            } catch (error) {
+                throw new Error(`Failed to query all reviews: ${error}`);
             }
         },
     },

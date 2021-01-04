@@ -6,6 +6,11 @@ export const typeDefs = gql`
         RESTAURANT
     }
 
+    enum ReviewsFilter {
+        RATING_LOW_TO_HIGH
+        RATING_HIGH_TO_LOW
+    }
+
     type User {
         id: ID!
         name: String!
@@ -22,9 +27,9 @@ export const typeDefs = gql`
         body: String!
         rating: Int!
         type: ReviewType!
-        city: String!
-        address: String!
-        url: String!
+        city: String
+        address: String
+        url: String
     }
 
     type Reviews {
@@ -45,9 +50,9 @@ export const typeDefs = gql`
 
     type Query {
         authUrl: String!
-        reviews: [Review!]!
         user(id: ID!): User!
         review(id: ID!): Review!
+        reviews(filter: ReviewsFilter!, limit: Int!, page: Int!): Reviews!
     }
 
     type Mutation {
