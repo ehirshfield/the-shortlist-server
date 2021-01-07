@@ -1,7 +1,14 @@
 import { ObjectId } from 'mongodb';
 import { IResolvers } from 'apollo-server-express';
+import { Google } from '../../../lib/api';
 import { Database, Review, User } from '../../../lib/types';
-import { ReviewArgs, ReviewsArgs, ReviewsData, ReviewsFilter } from './types';
+import {
+    ReviewArgs,
+    ReviewsArgs,
+    ReviewsData,
+    ReviewsFilter,
+    ReviewsQuery,
+} from './types';
 
 export const reviewResolvers: IResolvers = {
     Query: {
@@ -24,16 +31,36 @@ export const reviewResolvers: IResolvers = {
         },
         reviews: async (
             _root: undefined,
-            { filter, limit, page }: ReviewsArgs,
+            { location, filter, limit, page }: ReviewsArgs,
             { db }: { db: Database }
         ): Promise<ReviewsData> => {
             try {
+                const query: ReviewsQuery = {};
                 const data: ReviewsData = {
+                    region: null,
                     total: 0,
                     result: [],
                 };
 
-                let cursor = await db.reviews.find({});
+                if (location) {
+                    const { country, admin, city } = await Google.geocode(
+                        location
+                    );
+
+                    if (city) query.city = city;
+                    if (admin) query.admin = admin;
+                    if (country) {
+                        query.country = country;
+                    } else {
+                        throw new Error('No country found');
+                    }
+
+                    const cityText = city ? `${city}, ` : '';
+                    const adminText = admin ? `${admin}, ` : '';
+                    data.region = `${cityText}${adminText}${country}`;
+                }
+
+                let cursor = await db.reviews.find(query);
 
                 if (filter && filter === ReviewsFilter.RATING_LOW_TO_HIGH) {
                     cursor = cursor.sort({

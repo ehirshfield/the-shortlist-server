@@ -23,6 +23,7 @@
         "import/no-extraneous-dependencies": "off",
         "import/first": "off",
         "no-shadow": "warn",
-        "no-unused-vars": "warn"
+        "no-unused-vars": "warn",
+        "no-restricted-syntax": "warn"
     }
 }

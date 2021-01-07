@@ -23,6 +23,8 @@ export interface Review {
     city?: string;
     address?: string;
     url?: string;
+    admin?: string;
+    country?: string;
 }
 
 export interface User {

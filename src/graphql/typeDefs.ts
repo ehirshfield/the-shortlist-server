@@ -30,9 +30,12 @@ export const typeDefs = gql`
         city: String
         address: String
         url: String
+        country: String
+        admin: String
     }
 
     type Reviews {
+        region: String
         total: Int!
         result: [Review!]!
     }
@@ -52,7 +55,12 @@ export const typeDefs = gql`
         authUrl: String!
         user(id: ID!): User!
         review(id: ID!): Review!
-        reviews(filter: ReviewsFilter!, limit: Int!, page: Int!): Reviews!
+        reviews(
+            location: String
+            filter: ReviewsFilter!
+            limit: Int!
+            page: Int!
+        ): Reviews!
     }
 
     type Mutation {

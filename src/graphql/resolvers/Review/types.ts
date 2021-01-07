@@ -10,12 +10,20 @@ export interface ReviewArgs {
 }
 
 export interface ReviewsArgs {
+    location: string | null;
     filter: ReviewsFilter;
     limit: number;
     page: number;
 }
 
 export interface ReviewsData {
+    region: string | null;
     total: number;
     result: Review[];
+}
+
+export interface ReviewsQuery {
+    country?: string;
+    admin?: string;
+    city?: string;
 }
