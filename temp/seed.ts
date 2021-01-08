@@ -126,7 +126,7 @@ const reviews: Review[] = [
         rating: 8,
         author: '5d378db94e84753160e08b57',
         type: ReviewType.Restaurant,
-        city: 'New York City',
+        city: 'New York',
         address: '123 Pizza Street',
         country: 'United States',
         admin: 'New York',
