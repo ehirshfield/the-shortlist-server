@@ -1,5 +1,3 @@
-require('dotenv').config();
-
 import express, { Application } from 'express';
 import cookieParser from 'cookie-parser';
 import bodyParser from 'body-parser';
@@ -14,6 +12,11 @@ const mount = async (app: Application) => {
     app.use(bodyParser.json({ limit: '2mb' }));
     app.use(cookieParser(process.env.SECRET));
     app.use(compression());
+
+    app.use(express.static(`${__dirname}/the-shortlist-client`));
+    app.get('/*', (_req, res) => {
+        res.sendFile(`${__dirname}/the-shortlist-client/index.html`);
+    });
 
     const server = new ApolloServer({
         typeDefs,
