@@ -51,6 +51,16 @@ export const typeDefs = gql`
         code: String!
     }
 
+    input addReviewInput {
+        title: String!
+        body: String!
+        image: String!
+        type: ReviewType!
+        rating: Int!
+        url: String
+        address: String
+    }
+
     type Query {
         authUrl: String!
         user(id: ID!): User!
@@ -67,5 +77,6 @@ export const typeDefs = gql`
         logIn(input: LogInInput): Viewer!
         logOut: Viewer!
         deleteReview(id: ID!): Review!
+        addReview(input: addReviewInput!): Review!
     }
 `;

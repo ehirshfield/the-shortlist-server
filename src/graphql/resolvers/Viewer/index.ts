@@ -105,7 +105,6 @@ const logInViaCookie = async (
     );
 
     const viewer = updateRes.value;
-
     if (!viewer) {
         res.clearCookie('viewer', cookieOptions);
     }
@@ -132,6 +131,9 @@ export const viewerResolvers: IResolvers = {
             try {
                 const code = input ? input.code : null;
                 const token = crypto.randomBytes(16).toString('hex');
+
+                // Something is up with the xcsrf and this token being out of sync
+                console.log('crypto token :>> ', token);
 
                 const viewer: User | undefined = code
                     ? await logInViaGoogle(code, token, db, res)

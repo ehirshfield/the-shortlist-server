@@ -1,4 +1,4 @@
-import { Review } from '../../../lib/types';
+import { Review, ReviewType } from '../../../lib/types';
 
 export enum ReviewsFilter {
     RATING_LOW_TO_HIGH = 'RATING_LOW_TO_HIGH',
@@ -26,4 +26,18 @@ export interface ReviewsQuery {
     country?: string;
     admin?: string;
     city?: string;
+}
+
+export interface addReviewInput {
+    title: string;
+    body: string;
+    image: string;
+    type: ReviewType;
+    rating: number;
+    address?: string;
+    url?: string;
+}
+
+export interface addReviewArgs {
+    input: addReviewInput;
 }

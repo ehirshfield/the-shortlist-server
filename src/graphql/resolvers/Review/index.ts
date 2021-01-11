@@ -1,14 +1,41 @@
 import { ObjectId } from 'mongodb';
+import { Request } from 'express';
 import { IResolvers } from 'apollo-server-express';
-import { Google } from '../../../lib/api';
-import { Database, Review, User } from '../../../lib/types';
+import { Cloudinary, Google } from '../../../lib/api';
+import { Database, Review, ReviewType, User } from '../../../lib/types';
 import {
     ReviewArgs,
     ReviewsArgs,
     ReviewsData,
     ReviewsFilter,
     ReviewsQuery,
+    addReviewArgs,
+    addReviewInput,
 } from './types';
+import { authorize } from '../../../lib/utils';
+
+const verifyAddReviewInput = ({
+    title,
+    body,
+    type,
+    rating,
+}: addReviewInput) => {
+    if (title.length > 100) {
+        throw new Error('Review title must be under 100 characters');
+    }
+
+    if (body.length > 9000) {
+        throw new Error('Review body must be under 9000 characters');
+    }
+
+    if (type !== ReviewType.Recipe && type !== ReviewType.Restaurant) {
+        throw new Error('Review type must be either a recipe or restaurant!');
+    }
+
+    if (rating < 0 || rating > 10) {
+        throw new Error('Review rating must be between 1 and 10');
+    }
+};
 
 export const reviewResolvers: IResolvers = {
     Query: {
@@ -84,6 +111,63 @@ export const reviewResolvers: IResolvers = {
             } catch (error) {
                 throw new Error(`Failed to query all reviews: ${error}`);
             }
+        },
+    },
+    Mutation: {
+        addReview: async (
+            _root: undefined,
+            { input }: addReviewArgs,
+            { db, req }: { db: Database; req: Request }
+        ): Promise<Review> => {
+            verifyAddReviewInput(input);
+
+            const viewer = await authorize(db, req);
+            if (!viewer) {
+                throw new Error('Viewer cannot be found');
+            }
+
+            let imageURL;
+            try {
+                imageURL = await Cloudinary.upload(input.image);
+            } catch (error) {
+                throw new Error(`Cloudinary upload failed! ${error}`);
+            }
+
+            let insertResult;
+            if (input.type === ReviewType.Restaurant) {
+                const { country, admin, city } = await Google.geocode(
+                    input.address!
+                );
+                if (!country || !admin || !city) {
+                    throw new Error('Invalid address input');
+                }
+
+                insertResult = await db.reviews.insertOne({
+                    _id: new ObjectId(),
+                    ...input,
+                    image: imageURL,
+                    country,
+                    admin,
+                    city,
+                    author: viewer._id,
+                });
+            } else {
+                insertResult = await db.reviews.insertOne({
+                    _id: new ObjectId(),
+                    ...input,
+                    image: imageURL,
+                    author: viewer._id,
+                });
+            }
+
+            const insertedReview: Review = insertResult.ops[0];
+
+            await db.users.updateOne(
+                { _id: viewer._id },
+                { $push: { reviews: insertedReview._id } }
+            );
+
+            return insertedReview;
         },
     },
     Review: {
