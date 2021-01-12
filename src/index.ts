@@ -8,6 +8,7 @@ import { typeDefs, resolvers } from './graphql';
 
 const mount = async (app: Application) => {
     const db = await connectDatabase();
+    const PORT = process.env.PORT || 3000;
 
     app.use(bodyParser.json({ limit: '2mb' }));
     app.use(cookieParser(process.env.SECRET));
@@ -25,9 +26,9 @@ const mount = async (app: Application) => {
     });
 
     server.applyMiddleware({ app, path: '/api' });
-    app.listen(process.env.PORT);
+    app.listen(PORT);
 
-    console.log(`[app] : http://localhost:${process.env.PORT}`);
+    console.log(`[app] : http://localhost:${PORT}`);
 };
 
 mount(express());

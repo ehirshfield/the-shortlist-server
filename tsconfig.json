@@ -3,7 +3,7 @@
         "target": "es6",
         "module": "commonjs",
         "outDir": "./build",
-        "esModuleInterop": true,
+        "esMo../the-shortlist-deploy/builderop": true,
         "strict": true
     }
 }
