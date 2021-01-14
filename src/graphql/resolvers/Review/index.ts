@@ -19,8 +19,13 @@ const verifyAddReviewInput = ({
     body,
     type,
     rating,
+    subtitle,
 }: addReviewInput) => {
     if (title.length > 100) {
+        throw new Error('Review title must be under 100 characters');
+    }
+
+    if (subtitle.length > 200) {
         throw new Error('Review title must be under 100 characters');
     }
 

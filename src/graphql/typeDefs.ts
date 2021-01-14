@@ -22,6 +22,7 @@ export const typeDefs = gql`
     type Review {
         id: ID!
         title: String!
+        subtitle: String!
         author: User!
         image: String!
         body: String!

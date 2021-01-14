@@ -30,6 +30,7 @@ export interface ReviewsQuery {
 
 export interface addReviewInput {
     title: string;
+    subtitle: string;
     body: string;
     image: string;
     type: ReviewType;

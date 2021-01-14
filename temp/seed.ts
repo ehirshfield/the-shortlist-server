@@ -50,6 +50,7 @@ const reviews: Review[] = [
     {
         _id: new ObjectId('5d378db94e84753160e08b31'),
         title: 'Chana Masala by J. Kenji Lopez-Alt',
+        subtitle: 'A clever subtitle',
         image:
             'https://res.cloudinary.com/tiny-house/image/upload/v1560641352/mock/Toronto/toronto-listing-1_exv0tf.jpg',
         body:
@@ -63,6 +64,7 @@ const reviews: Review[] = [
     {
         _id: new ObjectId('5d378db94e84753160e08b4b'),
         title: 'Shakshuka from NYT Cooking',
+        subtitle: 'A clever subtitle',
         image:
             'https://res.cloudinary.com/tiny-house/image/upload/v1560645376/mock/Los%20Angeles/los-angeles-listing-1_aikhx7.jpg',
         body: 'new post about nothing',
@@ -74,6 +76,7 @@ const reviews: Review[] = [
     {
         _id: new ObjectId('5d378db94e84753160e08b37'),
         title: 'McDonalds on 3rd Street',
+        subtitle: 'A clever subtitle',
         image:
             'https://res.cloudinary.com/tiny-house/image/upload/v1560645375/mock/Los%20Angeles/los-angeles-listing-5_rll8i2.jpg',
         body:
@@ -89,6 +92,7 @@ const reviews: Review[] = [
     {
         _id: new ObjectId('5d378db94e84753160e08b38'),
         title: 'The Combination Taco Bell and Pizza Hut',
+        subtitle: 'A clever subtitle',
         image:
             'https://res.cloudinary.com/tiny-house/image/upload/v1560645377/mock/Los%20Angeles/los-angeles-listing-6_unhtji.jpg',
         body:
@@ -104,6 +108,7 @@ const reviews: Review[] = [
     {
         _id: new ObjectId('5d378db94e84753160e08b4c'),
         title: 'Great China',
+        subtitle: 'A clever subtitle',
         image:
             'https://res.cloudinary.com/tiny-house/image/upload/v1560646430/mock/Cancun/cancun-listing-1_zihihs.jpg',
         body:
@@ -119,6 +124,7 @@ const reviews: Review[] = [
     {
         _id: new ObjectId('5d378db94e84753160e08b3a'),
         title: 'Golden Corral',
+        subtitle: 'A clever subtitle',
         image:
             'https://res.cloudinary.com/tiny-house/image/upload/v1560646289/mock/Cancun/cancun-listing-2_bsocu5.jpg',
         body:
@@ -134,6 +140,7 @@ const reviews: Review[] = [
     {
         _id: new ObjectId('5d378db94e84753160e08b4f'),
         title: 'Dim Sum Bistro',
+        subtitle: 'A clever subtitle',
         image:
             'https://res.cloudinary.com/tiny-house/image/upload/v1560645376/mock/Los%20Angeles/los-angeles-listing-8_q01xt6.jpg',
         body:
@@ -149,6 +156,7 @@ const reviews: Review[] = [
     {
         _id: new ObjectId('5ff78ea88f8362ad6b64e564'),
         title: 'Lucha Libre',
+        subtitle: 'A clever subtitle',
         image:
             'https://res.cloudinary.com/tiny-house/image/upload/v1560645410/mock/London/london-listing-3_hbqxs1.jpg',
         body:
@@ -164,6 +172,7 @@ const reviews: Review[] = [
     {
         _id: new ObjectId('5d378db94e84753160e08b5c'),
         title: 'Primos Donuts',
+        subtitle: 'A clever subtitle',
         image:
             'https://res.cloudinary.com/tiny-house/image/upload/v1560645408/mock/London/london-listing-1_yedylx.jpg',
         body:

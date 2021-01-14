@@ -24,6 +24,7 @@
         "import/first": "off",
         "no-shadow": "warn",
         "no-unused-vars": "warn",
-        "no-restricted-syntax": "warn"
+        "no-restricted-syntax": "warn",
+        "no-await-in-loop": "warn"
     }
 }

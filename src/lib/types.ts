@@ -15,6 +15,7 @@ export enum ReviewType {
 export interface Review {
     _id: ObjectId;
     title: string;
+    subtitle: string;
     image: string;
     body: string;
     rating: number;

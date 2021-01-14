@@ -2,8 +2,11 @@
     "compilerOptions": {
         "target": "es6",
         "module": "commonjs",
+        "rootDir": "./src",
         "outDir": "./build",
-        "esMo../the-shortlist-deploy/builderop": true,
-        "strict": true
-    }
+        "strict": true,
+        "skipLibCheck": true,
+        "esModuleInterop": true
+    },
+    "exclude": ["temp/clear.ts", "temp/seed.ts"]
 }

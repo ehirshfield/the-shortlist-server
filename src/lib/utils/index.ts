@@ -12,21 +12,17 @@ export const authorize = async (
     req: Request
 ): Promise<User | null> => {
     let viewer = null;
-    const token = req.get('X-CSRF-TOKEN');
+    // const token = req.get('X-CSRF-TOKEN');
 
     const userArray = authorizedUsers.filter(
         (id) => id === req.signedCookies.viewer
     );
-
-    console.log('csrf token :>> ', token);
 
     if (userArray[0] === req.signedCookies.viewer) {
         viewer = await db.users.findOne({
             _id: req.signedCookies.viewer,
         });
     }
-
-    console.log('viewer :>> ', viewer);
 
     return viewer;
 };
