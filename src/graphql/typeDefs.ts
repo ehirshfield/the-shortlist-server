@@ -46,6 +46,7 @@ export const typeDefs = gql`
         token: String
         avatar: String
         didRequest: Boolean!
+        authorized: Boolean!
     }
 
     input LogInInput {
@@ -54,6 +55,7 @@ export const typeDefs = gql`
 
     input addReviewInput {
         title: String!
+        subtitle: String!
         body: String!
         image: String!
         type: ReviewType!

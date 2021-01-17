@@ -4,6 +4,7 @@ import { IResolvers } from 'apollo-server-express';
 import { Viewer, Database, User } from '../../../lib/types';
 import { Google } from '../../../lib/api/Google';
 import { LogInArgs } from './types';
+import { authorize } from '../../../lib/utils';
 
 const cookieOptions = {
     httpOnly: true,
@@ -139,7 +140,12 @@ export const viewerResolvers: IResolvers = {
                     ? await logInViaGoogle(code, token, db, res)
                     : await logInViaCookie(token, db, req, res);
                 if (!viewer) {
-                    return { didRequest: true };
+                    return { didRequest: true, authorized: false };
+                }
+
+                const user = await authorize(db, req);
+                if (user && user._id === viewer._id) {
+                    viewer.authorized = true;
                 }
 
                 return {
@@ -147,6 +153,7 @@ export const viewerResolvers: IResolvers = {
                     token: viewer.token,
                     avatar: viewer.avatar,
                     didRequest: true,
+                    authorized: viewer.authorized || false,
                 };
             } catch (error) {
                 throw new Error(`Failed to log in: ${error}`);
@@ -159,7 +166,7 @@ export const viewerResolvers: IResolvers = {
         ): Viewer => {
             try {
                 res.clearCookie('viewer', cookieOptions);
-                return { didRequest: true };
+                return { didRequest: true, authorized: false };
             } catch (error) {
                 throw new Error(`Failed to log out: ${error}`);
             }

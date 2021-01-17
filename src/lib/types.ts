@@ -5,6 +5,7 @@ export interface Viewer {
     token?: string;
     avatar?: string;
     didRequest: boolean;
+    authorized?: boolean;
 }
 
 export enum ReviewType {

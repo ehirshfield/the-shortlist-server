@@ -18,7 +18,7 @@ export const authorize = async (
         (id) => id === req.signedCookies.viewer
     );
 
-    if (userArray[0] === req.signedCookies.viewer) {
+    if (userArray.length === 1 && userArray[0] === req.signedCookies.viewer) {
         viewer = await db.users.findOne({
             _id: req.signedCookies.viewer,
         });

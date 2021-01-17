@@ -18,6 +18,7 @@ const users: User[] = [
             new ObjectId('5d378db94e84753160e08b4c'),
             new ObjectId('5d378db94e84753160e08b4f'),
             new ObjectId('5d378db94e84753160e08b5c'),
+            new ObjectId('600335a600d89f2eeda9ff7d'),
         ],
     },
     {
@@ -60,6 +61,22 @@ const reviews: Review[] = [
         type: ReviewType.Recipe,
         url:
             'https://www.seriouseats.com/recipes/2016/04/channa-masala-recipe.html',
+    },
+    {
+        _id: new ObjectId('600335a600d89f2eeda9ff7d'),
+        title: 'Fournee Bakery',
+        subtitle: 'How many is too many pastries?',
+        image:
+            'https://res.cloudinary.com/the-shortlist/image/upload/v1610822817/TS_Assets/r4exp81ttxcvyl0kmvxn.jpg',
+        body:
+            'Ut sit amet massa velit. Aliquam id rhoncus nibh. Curabitur malesuada scelerisque nunc vel pulvinar. Sed ornare leo sed nisl eleifend, quis pharetra sem suscipit. Vestibulum sit amet ante pellentesque nisl varius ultricies. Phasellus eu felis turpis. Sed consequat quis nibh eget lacinia. Integer condimentum tincidunt ante, non mattis nisi ultrices quis. Mauris pretium ex at condimentum tincidunt. Proin sed aliquet libero. Nam rutrum dolor diam, vel volutpat ipsum scelerisque at. Donec magna felis, euismod nec vulputate ut, ultrices et nulla. Nulla commodo posuere cursus. Aenean sapien leo, pharetra quis malesuada sed, vulputate in odio.',
+        rating: 5,
+        author: '5d378db94e84753160e08b55',
+        type: ReviewType.Restaurant,
+        city: 'Berkeley',
+        address: '2912 Domingo Ave',
+        country: 'United States',
+        admin: 'California',
     },
     {
         _id: new ObjectId('5d378db94e84753160e08b4b'),
