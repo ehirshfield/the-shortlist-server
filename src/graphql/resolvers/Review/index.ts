@@ -106,6 +106,10 @@ export const reviewResolvers: IResolvers = {
                     });
                 }
 
+                if (filter && filter === ReviewsFilter.NEWEST) {
+                    cursor = cursor.sort({ $natural: -1 });
+                }
+
                 cursor = cursor.skip(page > 0 ? (page - 1) * limit : 0);
                 cursor = cursor.limit(limit);
 

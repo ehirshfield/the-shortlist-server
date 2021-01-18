@@ -9,6 +9,7 @@ export const typeDefs = gql`
     enum ReviewsFilter {
         RATING_LOW_TO_HIGH
         RATING_HIGH_TO_LOW
+        NEWEST
     }
 
     type User {

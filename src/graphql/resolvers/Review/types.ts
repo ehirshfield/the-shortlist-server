@@ -3,6 +3,7 @@ import { Review, ReviewType } from '../../../lib/types';
 export enum ReviewsFilter {
     RATING_LOW_TO_HIGH = 'RATING_LOW_TO_HIGH',
     RATING_HIGH_TO_LOW = 'RATING_HIGH_TO_LOW',
+    NEWEST = 'NEWEST',
 }
 
 export interface ReviewArgs {
