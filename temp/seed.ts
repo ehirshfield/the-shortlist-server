@@ -61,6 +61,7 @@ const reviews: Review[] = [
         type: ReviewType.Recipe,
         url:
             'https://www.seriouseats.com/recipes/2016/04/channa-masala-recipe.html',
+        highlights: ['Tip 1', 'Tip 2', 'Tip 3', 'Tip 4', 'Tip 5'],
     },
     {
         _id: new ObjectId('600335a600d89f2eeda9ff7d'),
@@ -77,6 +78,7 @@ const reviews: Review[] = [
         address: '2912 Domingo Ave',
         country: 'United States',
         admin: 'California',
+        highlights: ['Tip 1', 'Tip 2', 'Tip 3', 'Tip 4', 'Tip 5'],
     },
     {
         _id: new ObjectId('5d378db94e84753160e08b4b'),
@@ -89,6 +91,7 @@ const reviews: Review[] = [
         author: '5d378db94e84753160e08b55',
         type: ReviewType.Recipe,
         url: 'https://cooking.nytimes.com/recipes/1014721-shakshuka-with-feta',
+        highlights: ['Tip 1', 'Tip 2', 'Tip 3', 'Tip 4', 'Tip 5'],
     },
     {
         _id: new ObjectId('5d378db94e84753160e08b37'),
@@ -105,6 +108,7 @@ const reviews: Review[] = [
         address: '123 Fake Street',
         country: 'United States',
         admin: 'California',
+        highlights: ['Tip 1', 'Tip 2', 'Tip 3', 'Tip 4', 'Tip 5'],
     },
     {
         _id: new ObjectId('5d378db94e84753160e08b38'),
@@ -121,6 +125,7 @@ const reviews: Review[] = [
         address: '1234 Fake Street',
         country: 'United States',
         admin: 'California',
+        highlights: ['Tip 1', 'Tip 2', 'Tip 3', 'Tip 4', 'Tip 5'],
     },
     {
         _id: new ObjectId('5d378db94e84753160e08b4c'),
@@ -137,6 +142,7 @@ const reviews: Review[] = [
         address: '123 Uni Street',
         country: 'United States',
         admin: 'California',
+        highlights: ['Tip 1', 'Tip 2', 'Tip 3', 'Tip 4', 'Tip 5'],
     },
     {
         _id: new ObjectId('5d378db94e84753160e08b3a'),
@@ -153,6 +159,7 @@ const reviews: Review[] = [
         address: '123 Pizza Street',
         country: 'United States',
         admin: 'New York',
+        highlights: ['Tip 1', 'Tip 2', 'Tip 3', 'Tip 4', 'Tip 5'],
     },
     {
         _id: new ObjectId('5d378db94e84753160e08b4f'),
@@ -169,6 +176,7 @@ const reviews: Review[] = [
         address: '675 Broadway St',
         country: 'United States',
         admin: 'California',
+        highlights: ['Tip 1', 'Tip 2', 'Tip 3', 'Tip 4', 'Tip 5'],
     },
     {
         _id: new ObjectId('5ff78ea88f8362ad6b64e564'),
@@ -185,6 +193,7 @@ const reviews: Review[] = [
         address: '12123 Tom St',
         country: 'United States',
         admin: 'California',
+        highlights: ['Tip 1', 'Tip 2', 'Tip 3', 'Tip 4', 'Tip 5'],
     },
     {
         _id: new ObjectId('5d378db94e84753160e08b5c'),
@@ -201,6 +210,7 @@ const reviews: Review[] = [
         address: '999 Pico St',
         country: 'United States',
         admin: 'California',
+        highlights: ['Tip 1', 'Tip 2', 'Tip 3', 'Tip 4', 'Tip 5'],
     },
 ];
 

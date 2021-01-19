@@ -40,6 +40,7 @@ export const typeDefs = gql`
         url: String
         country: String
         admin: String
+        highlights: [String!]
     }
 
     type Reviews {
@@ -69,6 +70,7 @@ export const typeDefs = gql`
         rating: Int!
         url: String
         address: String
+        highlights: [String!]
     }
 
     type Query {

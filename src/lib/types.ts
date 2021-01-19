@@ -27,6 +27,7 @@ export interface Review {
     url?: string;
     admin?: string;
     country?: string;
+    highlights?: string[];
 }
 
 export interface User {
