@@ -6,6 +6,12 @@ export enum ReviewsFilter {
     NEWEST = 'NEWEST',
 }
 
+export enum TypesFilter {
+    ALL = 'ALL',
+    RESTAURANT = 'RESTAURANT',
+    RECIPE = 'RECIPE',
+}
+
 export interface ReviewArgs {
     id: string;
 }
@@ -13,6 +19,7 @@ export interface ReviewArgs {
 export interface ReviewsArgs {
     location: string | null;
     filter: ReviewsFilter;
+    typesFilter: TypesFilter;
     limit: number;
     page: number;
 }

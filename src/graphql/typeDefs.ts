@@ -12,6 +12,12 @@ export const typeDefs = gql`
         NEWEST
     }
 
+    enum TypesFilter {
+        ALL
+        RESTAURANT
+        RECIPE
+    }
+
     type User {
         id: ID!
         name: String!
@@ -72,6 +78,7 @@ export const typeDefs = gql`
         reviews(
             location: String
             filter: ReviewsFilter!
+            typesFilter: TypesFilter!
             limit: Int!
             page: Int!
         ): Reviews!

@@ -12,7 +12,7 @@ import {
     addReviewArgs,
     addReviewInput,
 } from './types';
-import { authorize } from '../../../lib/utils';
+import { authorize, filterSort, typeQuery } from '../../../lib/utils';
 
 const verifyAddReviewInput = ({
     title,
@@ -63,11 +63,11 @@ export const reviewResolvers: IResolvers = {
         },
         reviews: async (
             _root: undefined,
-            { location, filter, limit, page }: ReviewsArgs,
+            { location, filter, typesFilter, limit, page }: ReviewsArgs,
             { db }: { db: Database }
         ): Promise<ReviewsData> => {
             try {
-                const query: ReviewsQuery = {};
+                let query: ReviewsQuery = {};
                 const data: ReviewsData = {
                     region: null,
                     total: 0,
@@ -92,22 +92,18 @@ export const reviewResolvers: IResolvers = {
                     data.region = `${cityText}${adminText}${country}`;
                 }
 
+                if (typesFilter) {
+                    const newQuery = typeQuery(typesFilter);
+                    query = {
+                        ...query,
+                        ...newQuery,
+                    };
+                }
+
                 let cursor = await db.reviews.find(query);
 
-                if (filter && filter === ReviewsFilter.RATING_LOW_TO_HIGH) {
-                    cursor = cursor.sort({
-                        rating: 1,
-                    });
-                }
-
-                if (filter && filter === ReviewsFilter.RATING_HIGH_TO_LOW) {
-                    cursor = cursor.sort({
-                        rating: -1,
-                    });
-                }
-
-                if (filter && filter === ReviewsFilter.NEWEST) {
-                    cursor = cursor.sort({ $natural: -1 });
+                if (filter) {
+                    cursor = filterSort(cursor, filter);
                 }
 
                 cursor = cursor.skip(page > 0 ? (page - 1) * limit : 0);

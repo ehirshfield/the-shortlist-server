@@ -1,4 +1,8 @@
 import { Request } from 'express';
+import {
+    ReviewsFilter,
+    TypesFilter,
+} from '../../graphql/resolvers/Review/types';
 import { Database, User } from '../types';
 
 const authorizedUsers = [
@@ -25,4 +29,40 @@ export const authorize = async (
     }
 
     return viewer;
+};
+
+export const filterSort = (cursor: any, filter: ReviewsFilter) => {
+    let filterQuery;
+    switch (filter) {
+        case ReviewsFilter.RATING_LOW_TO_HIGH:
+            filterQuery = { rating: 1 };
+            break;
+        case ReviewsFilter.RATING_HIGH_TO_LOW:
+            filterQuery = { rating: -1 };
+            break;
+        case ReviewsFilter.NEWEST:
+            filterQuery = { $natural: -1 };
+            break;
+        default:
+            break;
+    }
+
+    const query = {
+        ...filterQuery,
+    };
+
+    return cursor.sort(query);
+};
+
+export const typeQuery = (typeFilter: TypesFilter) => {
+    switch (typeFilter) {
+        case TypesFilter.RECIPE:
+            return { type: TypesFilter.RECIPE };
+        case TypesFilter.RESTAURANT:
+            return { type: TypesFilter.RESTAURANT };
+        case TypesFilter.ALL:
+            return {};
+        default:
+            return {};
+    }
 };
