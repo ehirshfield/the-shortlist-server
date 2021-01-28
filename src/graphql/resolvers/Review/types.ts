@@ -45,6 +45,7 @@ export interface addReviewInput {
     rating: number;
     address?: string;
     url?: string;
+    video?: string;
 }
 
 export interface addReviewArgs {

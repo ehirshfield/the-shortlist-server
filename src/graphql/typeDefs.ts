@@ -41,6 +41,7 @@ export const typeDefs = gql`
         country: String
         admin: String
         highlights: [String!]
+        video: String
     }
 
     type Reviews {
@@ -71,6 +72,7 @@ export const typeDefs = gql`
         url: String
         address: String
         highlights: [String!]
+        video: String
     }
 
     type Query {

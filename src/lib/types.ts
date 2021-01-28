@@ -28,6 +28,7 @@ export interface Review {
     admin?: string;
     country?: string;
     highlights?: string[];
+    video?: string;
 }
 
 export interface User {

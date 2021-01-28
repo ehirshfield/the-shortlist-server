@@ -7,7 +7,6 @@ import {
     ReviewArgs,
     ReviewsArgs,
     ReviewsData,
-    ReviewsFilter,
     ReviewsQuery,
     addReviewArgs,
     addReviewInput,
