@@ -11,7 +11,7 @@ import {
     addReviewArgs,
     addReviewInput,
 } from './types';
-import { authorize, filterSort, typeQuery } from '../../../lib/utils';
+import { authorizeToken, filterSort, typeQuery } from '../../../lib/utils';
 
 const verifyAddReviewInput = ({
     title,
@@ -125,7 +125,7 @@ export const reviewResolvers: IResolvers = {
         ): Promise<Review> => {
             verifyAddReviewInput(input);
 
-            const viewer = await authorize(db, req);
+            const viewer = await authorizeToken(db, req);
             if (!viewer) {
                 throw new Error('Viewer cannot be found');
             }

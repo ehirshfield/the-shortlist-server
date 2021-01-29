@@ -133,9 +133,6 @@ export const viewerResolvers: IResolvers = {
                 const code = input ? input.code : null;
                 const token = crypto.randomBytes(16).toString('hex');
 
-                // Something is up with the xcsrf and this token being out of sync
-                // console.log('crypto token :>> ', token);
-
                 const viewer: User | undefined = code
                     ? await logInViaGoogle(code, token, db, res)
                     : await logInViaCookie(token, db, req, res);

@@ -16,7 +16,6 @@ export const authorize = async (
     req: Request
 ): Promise<User | null> => {
     let viewer = null;
-    // const token = req.get('X-CSRF-TOKEN');
 
     const userArray = authorizedUsers.filter(
         (id) => id === req.signedCookies.viewer
@@ -25,6 +24,27 @@ export const authorize = async (
     if (userArray.length === 1 && userArray[0] === req.signedCookies.viewer) {
         viewer = await db.users.findOne({
             _id: req.signedCookies.viewer,
+        });
+    }
+
+    return viewer;
+};
+
+export const authorizeToken = async (
+    db: Database,
+    req: Request
+): Promise<User | null> => {
+    let viewer = null;
+    const token = req.get('X-CSRF-TOKEN');
+
+    const userArray = authorizedUsers.filter(
+        (id) => id === req.signedCookies.viewer
+    );
+
+    if (userArray.length === 1 && userArray[0] === req.signedCookies.viewer) {
+        viewer = await db.users.findOne({
+            _id: req.signedCookies.viewer,
+            token,
         });
     }
 
