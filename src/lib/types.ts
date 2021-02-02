@@ -22,12 +22,13 @@ export interface Review {
     rating: number;
     author: string;
     type: ReviewType;
+    highlights: string[];
+    lowlights: string[];
     city?: string;
     address?: string;
     url?: string;
     admin?: string;
     country?: string;
-    highlights?: string[];
     video?: string;
 }
 

@@ -40,7 +40,8 @@ export const typeDefs = gql`
         url: String
         country: String
         admin: String
-        highlights: [String!]
+        highlights: [String!]!
+        lowlights: [String!]!
         video: String
     }
 
@@ -71,7 +72,8 @@ export const typeDefs = gql`
         rating: Int!
         url: String
         address: String
-        highlights: [String!]
+        highlights: [String!]!
+        lowlights: [String!]!
         video: String
     }
 

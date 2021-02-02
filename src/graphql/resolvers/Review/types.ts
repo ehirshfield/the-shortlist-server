@@ -43,6 +43,8 @@ export interface addReviewInput {
     image: string;
     type: ReviewType;
     rating: number;
+    highlights: string[];
+    lowlights: string[];
     address?: string;
     url?: string;
     video?: string;
