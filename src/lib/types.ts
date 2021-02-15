@@ -11,6 +11,7 @@ export interface Viewer {
 export enum ReviewType {
     Recipe = 'RECIPE',
     Restaurant = 'RESTAURANT',
+    Product = 'PRODUCT',
 }
 
 export interface Review {

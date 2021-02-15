@@ -19,6 +19,7 @@ const users: User[] = [
             new ObjectId('5d378db94e84753160e08b4f'),
             new ObjectId('5d378db94e84753160e08b5c'),
             new ObjectId('600335a600d89f2eeda9ff7d'),
+            new ObjectId('6029daf24d971a85238f6386'),
         ],
     },
     {
@@ -219,6 +220,20 @@ const reviews: Review[] = [
         address: '999 Pico St',
         country: 'United States',
         admin: 'California',
+        highlights: ['Tip 1', 'Tip 2', 'Tip 3', 'Tip 4', 'Tip 5'],
+        lowlights: ['Tip 1', 'Tip 2', 'Tip 3', 'Tip 4', 'Tip 5'],
+    },
+    {
+        _id: new ObjectId('6029daf24d971a85238f6386'),
+        title: 'Kimchi Dumplings',
+        subtitle: "Can't even read the package",
+        image:
+            'https://res.cloudinary.com/tiny-house/image/upload/v1560645408/mock/London/london-listing-1_yedylx.jpg',
+        body:
+            'Ut sit amet massa velit. Aliquam id rhoncus nibh. Curabitur malesuada scelerisque nunc vel pulvinar. Sed ornare leo sed nisl eleifend, quis pharetra sem suscipit. Vestibulum sit amet ante pellentesque nisl varius ultricies. Phasellus eu felis turpis. Sed consequat quis nibh eget lacinia. Integer condimentum tincidunt ante, non mattis nisi ultrices quis. Mauris pretium ex at condimentum tincidunt. Proin sed aliquet libero. Nam rutrum dolor diam, vel volutpat ipsum scelerisque at. Donec magna felis, euismod nec vulputate ut, ultrices et nulla. Nulla commodo posuere cursus. Aenean sapien leo, pharetra quis malesuada sed, vulputate in odio.',
+        rating: 8.5,
+        author: '5d378db94e84753160e08b55',
+        type: ReviewType.Product,
         highlights: ['Tip 1', 'Tip 2', 'Tip 3', 'Tip 4', 'Tip 5'],
         lowlights: ['Tip 1', 'Tip 2', 'Tip 3', 'Tip 4', 'Tip 5'],
     },

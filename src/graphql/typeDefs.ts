@@ -4,6 +4,7 @@ export const typeDefs = gql`
     enum ReviewType {
         RECIPE
         RESTAURANT
+        PRODUCT
     }
 
     enum ReviewsFilter {
@@ -16,6 +17,7 @@ export const typeDefs = gql`
         ALL
         RESTAURANT
         RECIPE
+        PRODUCT
     }
 
     type User {

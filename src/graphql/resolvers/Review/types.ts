@@ -10,6 +10,7 @@ export enum TypesFilter {
     ALL = 'ALL',
     RESTAURANT = 'RESTAURANT',
     RECIPE = 'RECIPE',
+    PRODUCT = 'PRODUCT',
 }
 
 export interface ReviewArgs {

@@ -80,6 +80,8 @@ export const typeQuery = (typeFilter: TypesFilter) => {
             return { type: TypesFilter.RECIPE };
         case TypesFilter.RESTAURANT:
             return { type: TypesFilter.RESTAURANT };
+        case TypesFilter.PRODUCT:
+            return { type: TypesFilter.PRODUCT };
         case TypesFilter.ALL:
             return {};
         default:

@@ -32,8 +32,14 @@ const verifyAddReviewInput = ({
         throw new Error('Review body must be under 9000 characters');
     }
 
-    if (type !== ReviewType.Recipe && type !== ReviewType.Restaurant) {
-        throw new Error('Review type must be either a recipe or restaurant!');
+    if (
+        type !== ReviewType.Recipe &&
+        type !== ReviewType.Restaurant &&
+        type !== ReviewType.Product
+    ) {
+        throw new Error(
+            'Review type must be either a recipem, restaurant or product!'
+        );
     }
 
     if (rating < 0 || rating > 10) {
