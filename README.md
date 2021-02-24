@@ -2,7 +2,7 @@
 
 A Typescript Express Node.js server with GraphQL and MongoDB for culinary curiosities!
 
-Check out the blog here: [The Shortlist](https://the-shortlist.herokuapp.com/).
+Check out the blog here: [The Shortlist](https://www.theshortlistblog.com/).
 
 ## To Run Locally
 
